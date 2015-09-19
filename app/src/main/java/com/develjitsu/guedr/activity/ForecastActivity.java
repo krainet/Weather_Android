@@ -1,7 +1,10 @@
 package com.develjitsu.guedr.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,5 +43,22 @@ public class ForecastActivity extends AppCompatActivity {
         mHumidity.setText(String.format(getString(R.string.humidity_parameter), forecast.getMaxTemp()));
         mDescription.setText(forecast.getDescription());
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.forecast,menu);
+        //return super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.menu_settings){
+            Intent settingsIntent = new Intent(this,SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
