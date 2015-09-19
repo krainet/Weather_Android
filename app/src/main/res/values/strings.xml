@@ -5,4 +5,7 @@
     <string name="action_settings">Opciones</string>
     <string name="system1_button">Sietema EU</string>
     <string name="system2_button">Sistema EEUU</string>
+    <string name="boton3_system">Boton 3</string>
+    <string name="boton3_eu">Sistema Europeo</string>
+    <string name="boton3_eeuu">Sistema Americano</string>
 </resources>

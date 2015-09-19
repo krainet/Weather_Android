@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ToggleButton;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private ImageView mImageView;
 
@@ -15,12 +16,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mImageView= (ImageView) findViewById(R.id.weather_image);
-        findViewById(R.id.system_button1).setOnClickListener(this);
-        findViewById(R.id.system_button2).setOnClickListener(this);
-
+        final ToggleButton button = (ToggleButton) findViewById(R.id.system_button3);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mImageView.setImageResource(button.isChecked()?R.drawable.offline_weather:R.drawable.offline_weather2);
+            }
+        });
     }
 
-    @Override
+
+
+/*    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.system_button1:
@@ -30,29 +37,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mImageView.setImageResource(R.drawable.offline_weather);
                 break;
         }
-    }
-
-
-    //quitar menu
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }*/
 }

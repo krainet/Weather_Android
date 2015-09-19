@@ -23,12 +23,22 @@
         android:layout_marginTop="33dp"
         android:layout_gravity="center_horizontal" />
 
+
+
+    <ToggleButton
+        android:id="@+id/system_button3"
+        android:text="@string/boton3_system"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/boton3_eu"
+        android:textOn="@string/boton3_eeuu"/>
+
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,10 +54,9 @@
             android:id="@+id/system_button2"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"/>
-
-
     </LinearLayout>
-    
+-->
+
 
     
 
