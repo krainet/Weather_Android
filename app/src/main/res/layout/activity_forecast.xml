@@ -21,7 +21,7 @@
         android:tag="1"
         android:layout_weight="1"
         android:layout_marginTop="33dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center" />
 
 
 

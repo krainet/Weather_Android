@@ -1,4 +1,4 @@
-package com.develjitsu.guedr;
+package com.develjitsu.guedr.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,14 +6,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ToggleButton;
 
-public class MainActivity extends AppCompatActivity {
+import com.develjitsu.guedr.R;
+
+public class ForecastActivity extends AppCompatActivity {
 
     private ImageView mImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_forecast);
 
         mImageView= (ImageView) findViewById(R.id.weather_image);
         final ToggleButton button = (ToggleButton) findViewById(R.id.system_button3);
