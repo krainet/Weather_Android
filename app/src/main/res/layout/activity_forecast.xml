@@ -1,11 +1,61 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".activity.ForecastActivity">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/forecast_image"
+        android:src="@drawable/sun_cloud"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/forecast_image"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true">
+
+        <TextView android:text="Temperatura máxima: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/max_temp" />
+
+        <TextView android:text="Temperatura mínima: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/min_temp" />
+
+        <TextView android:text="Humedad relativa: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/humidity" />
+
+
+    </LinearLayout>
+
+    <TextView android:text="Description del tiempo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/forecast_description"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/forecast_image"
+        />
+
+</RelativeLayout>
+
+
+
+    <!--<TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/textView" />
@@ -32,32 +82,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textOff="@string/boton3_eu"
-        android:textOn="@string/boton3_eeuu"/>
+        android:textOn="@string/boton3_eeuu"/>-->
 
-<!--
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
+    <!--
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/system1_button"
-            android:id="@+id/system_button1"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"/>
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/system1_button"
+                android:id="@+id/system_button1"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/system2_button"
-            android:id="@+id/system_button2"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"/>
-    </LinearLayout>
--->
-
-
-    
-
-</LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/system2_button"
+                android:id="@+id/system_button2"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    -->

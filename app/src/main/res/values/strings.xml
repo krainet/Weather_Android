@@ -8,4 +8,7 @@
     <string name="boton3_system">Boton 3</string>
     <string name="boton3_eu">Sistema Europeo</string>
     <string name="boton3_eeuu">Sistema Americano</string>
+    <string name="max_temp_parameter">Temperatura máxima: %.2f</string>
+    <string name="min_temp_parameter">Temperatura mínima: %.2f</string>
+    <string name="humidity_parameter">Humedad relativa: %.0f %%</string>
 </resources>
