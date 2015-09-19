@@ -2,9 +2,7 @@ package com.develjitsu.guedr;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -26,10 +24,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.system_button1:
-                mImageView.setImageResource(R.drawable.offline_weather);
+                mImageView.setImageResource(R.drawable.offline_weather2);
                 break;
             case R.id.system_button2:
-                mImageView.setImageResource(R.drawable.offline_weather2);
+                mImageView.setImageResource(R.drawable.offline_weather);
                 break;
         }
     }
