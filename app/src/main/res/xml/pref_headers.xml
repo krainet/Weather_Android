@@ -6,12 +6,16 @@
         android:fragment="com.develjitsu.guedr.activity.SettingsActivity$GeneralPreferenceFragment"
         android:title="@string/pref_header_general" />
 
+    <!--
+
+    Unused settings
+
     <header
         android:fragment="com.develjitsu.guedr.activity.SettingsActivity$NotificationPreferenceFragment"
         android:title="@string/pref_header_notifications" />
 
     <header
         android:fragment="com.develjitsu.guedr.activity.SettingsActivity$DataSyncPreferenceFragment"
-        android:title="@string/pref_header_data_sync" />
+        android:title="@string/pref_header_data_sync" />-->
 
 </preference-headers>

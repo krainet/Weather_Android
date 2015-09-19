@@ -39,7 +39,7 @@ public class ForecastActivity extends AppCompatActivity {
         mForecast = forecast;
 
         mMaxTemp.setText(String.format(getString(R.string.max_temp_parameter),forecast.getMaxTemp()));
-        mMinTemp.setText(String.format(getString(R.string.min_temp_parameter),forecast.getMaxTemp()));
+        mMinTemp.setText(String.format(getString(R.string.min_temp_parameter),forecast.getMinTemp()));
         mHumidity.setText(String.format(getString(R.string.humidity_parameter), forecast.getMaxTemp()));
         mDescription.setText(forecast.getDescription());
 
