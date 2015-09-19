@@ -3,4 +3,5 @@
 
     <string name="hello_world">Hola Mundio!</string>
     <string name="action_settings">Opciones</string>
+    <string name="button_changesystem_prediction">Cambiar sistema de predicción</string>
 </resources>
