@@ -1,3 +1,7 @@
+/**
+ * Created by hadock on 20/09/15.
+ */
+
 package com.develjitsu.guedr.fragment;
 
 
@@ -21,9 +25,7 @@ import com.develjitsu.guedr.R;
 import com.develjitsu.guedr.activity.SettingsActivity;
 import com.develjitsu.guedr.model.Forecast;
 
-/**
- * Created by hadock on 20/09/15.
- */
+
 public class ForecastFragment extends Fragment {
 
     private Forecast mForecast;
@@ -83,8 +85,7 @@ public class ForecastFragment extends Fragment {
     private int getSelectedMetrics() {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String stringMetrics = pref.getString(getString(R.string.metric_selection), String.valueOf(SettingsActivity.PREF_CELSIUS));
-        int metrics = Integer.valueOf(stringMetrics);
-        return metrics;
+        return Integer.valueOf(stringMetrics);
     }
 
     public static float toFarenheit(float celsius){
@@ -116,15 +117,15 @@ public class ForecastFragment extends Fragment {
             setForecast(mForecast);
 
             //Snack bar notification (with undo)
-            Snackbar.make(getView().findViewById(android.R.id.content), R.string.updated_preferences, Snackbar.LENGTH_LONG)
+            Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.updated_preferences, Snackbar.LENGTH_LONG)
                     .setAction(R.string.undo, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             //Get preferences instade of create instance of SharedPreferences (using static mode)
                             getActivity().getPreferences(1).edit()
-                                    .putString(getString(R.string.metric_selection),String.valueOf(prevMetrics))
+                                    .putString(getString(R.string.metric_selection), String.valueOf(prevMetrics))
                                     .apply(); //Puede usarse commit(), apply() no comprueba error al guardar
-                            mCurrentMetrics=prevMetrics;
+                            mCurrentMetrics = prevMetrics;
                             setForecast(mForecast);
                         }
                     }).show();
