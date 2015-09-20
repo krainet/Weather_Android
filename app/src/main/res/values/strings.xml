@@ -13,4 +13,5 @@
     <string name="humidity_parameter">Humedad relativa: %.0f %%</string>
     <string name="updated_preferences">Preferencias actualizadas</string>
     <string name="undo">Deshacer</string>
+    <string name="city_example1">Madrid</string>
 </resources>
