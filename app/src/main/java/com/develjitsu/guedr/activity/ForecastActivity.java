@@ -1,10 +1,14 @@
 package com.develjitsu.guedr.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +25,9 @@ public class ForecastActivity extends AppCompatActivity {
     private TextView mHumidity;
     private TextView mDescription;
 
+    private int mCurrentMetrics;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +39,20 @@ public class ForecastActivity extends AppCompatActivity {
         mHumidity= (TextView) findViewById(R.id.humidity);
         mDescription= (TextView) findViewById(R.id.forecast_description);
 
-        setForecast(new Forecast(37,23,59,"Algunas nuves","icon01"));
+        setForecast(new Forecast(37, 23, 59, "Algunas nuves", "icon01"));
+        mCurrentMetrics=getSelectedMetrics();
     }
 
     public void setForecast(Forecast forecast){
         mForecast = forecast;
 
-        mMaxTemp.setText(String.format(getString(R.string.max_temp_parameter),forecast.getMaxTemp()));
-        mMinTemp.setText(String.format(getString(R.string.min_temp_parameter),forecast.getMinTemp()));
-        mHumidity.setText(String.format(getString(R.string.humidity_parameter), forecast.getMaxTemp()));
+        float maxTmp = mCurrentMetrics == SettingsActivity.PREF_CELSIUS?forecast.getMaxTemp():toFarenheit(forecast.getMaxTemp());
+        float minTmp = mCurrentMetrics == SettingsActivity.PREF_CELSIUS?forecast.getMinTemp():toFarenheit(forecast.getMinTemp());
+        String tmpSuffix = mCurrentMetrics == SettingsActivity.PREF_CELSIUS?"ºC":"ºF";
+
+        mMaxTemp.setText(String.format(getString(R.string.max_temp_parameter),maxTmp,tmpSuffix));
+        mMinTemp.setText(String.format(getString(R.string.min_temp_parameter),minTmp,tmpSuffix));
+        mHumidity.setText(String.format(getString(R.string.humidity_parameter), forecast.getHumidity()));
         mDescription.setText(forecast.getDescription());
 
     }
@@ -60,5 +72,42 @@ public class ForecastActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(mCurrentMetrics!=getSelectedMetrics()){
+            final int prevMetrics = mCurrentMetrics;
+
+            mCurrentMetrics=getSelectedMetrics();
+            setForecast(mForecast);
+
+            //Snack bar notification (with undo)
+            Snackbar.make(findViewById(android.R.id.content), R.string.updated_preferences,Snackbar.LENGTH_LONG)
+                    .setAction(R.string.undo, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //Get preferences instade of create instance of SharedPreferences (using static mode)
+                            getPreferences(MODE_PRIVATE).edit()
+                                    .putString(getString(R.string.metric_selection),String.valueOf(prevMetrics))
+                                    .apply(); //Puede usarse commit(), apply() no comprueba error al guardar
+                            mCurrentMetrics=prevMetrics;
+                            setForecast(mForecast);
+                        }
+                    }).show();
+        }
+    }
+
+    private int getSelectedMetrics() {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String stringMetrics = pref.getString(getString(R.string.metric_selection), String.valueOf(SettingsActivity.PREF_CELSIUS));
+        int metrics = Integer.valueOf(stringMetrics);
+        return metrics;
+    }
+
+    public static float toFarenheit(float celsius){
+        return (celsius*1.8f)+32;
     }
 }
